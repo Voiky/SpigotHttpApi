@@ -1,0 +1,19 @@
+## ==== HTTP SERVER CONFIGURATION ==== ##
+
+# server port, please verify your port is forwarded if not the plugin will not work
+http_port: 8001
+# API key, only you website and this config file will know it to secure your server
+http_api_key: changemeplease
+
+## === TRANSLATIONS === ##
+#
+# Little index for your translations :
+#
+# :player: is the player name (in minecraft)
+# :quantity: is the item quantity
+# :item-name: is the item name
+#
+## ==================== ##
+
+# Message when the player voted for the server
+vote_new: ":player: voted for the server and won :quantity: :item-name:!"
