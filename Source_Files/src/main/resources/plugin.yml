@@ -1,0 +1,21 @@
+name: SpigotHttpApi
+version: 0.0.1
+main: com.gmail.voikyfrenchguy.Main
+description: A plugin for integrating a minimal web server Api into your spigot server to request for things from your website like player vote, register or buy, see documentation !
+author: Voiky
+database: true
+commands:
+  getport:
+    permission: shttpapi.admin
+    description: Get the port of the server
+    usage: Simply use /port
+  getstatus:
+    permission: shttpapi.admin
+    description: Say if the server is online or offline
+    usage: Simply use /getstatus
+  stophttpserver:
+    permission: shttpapi.admin
+    description: Stop the server.
+  starthttpserver:
+    permission: shttpapi.admin
+    description: Start the server.
