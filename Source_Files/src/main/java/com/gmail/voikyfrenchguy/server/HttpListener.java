@@ -1,6 +1,14 @@
 package com.gmail.voikyfrenchguy.server;
 
+import com.gmail.voikyfrenchguy.server.interfaces.NewVote;
 import com.gmail.voikyfrenchguy.utils.TaskExecutor;
+import com.gmail.voikyfrenchguy.utils.entities.ItemRef;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import spark.Request;
+
+import static spark.Spark.*;
+
 
 public class HttpListener {
     private final int port;
@@ -16,9 +24,19 @@ public class HttpListener {
     }
 
     private void startRouting() {
+        path("/mine-api", () -> {
+            path("/vote", () -> {
+                post("/new", (request, response) -> {
+                    Gson gson = new GsonBuilder().create();
+                    NewVote body = gson.fromJson(request.body(), NewVote);
+                    ItemRef item = new ItemRef();
+                });
+            });
+        });
     }
 
 
-    public void stop() {
+    public void stopListener() {
+        stop();
     }
 }

@@ -33,6 +33,6 @@ public class Main extends JavaPlugin {
     @Override
     public void onDisable() {
         super.onDisable();
-        this.httpListener.stop();
+        this.httpListener.stopListener();
     }
 }
