@@ -1,11 +1,14 @@
 package com.gmail.voikyfrenchguy;
 
+import com.gmail.voikyfrenchguy.server.HttpListener;
+import com.gmail.voikyfrenchguy.utils.TaskExecutor;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.logging.Level;
 
 public class Main extends JavaPlugin {
 
+    TaskExecutor taskExecutor;
     HttpListener httpListener;
 
     @Override
@@ -16,7 +19,8 @@ public class Main extends JavaPlugin {
         } catch (Exception e) {
             this.getLogger().log(Level.SEVERE, "Config file error: please check your configuration");
         }
-        this.httpListener = new HttpListener(this.getConfig().getInt("http_port"), this.getConfig().getString("http_auth_key"));
+        this.taskExecutor = new TaskExecutor((JavaPlugin) this);
+        this.httpListener = new HttpListener(this.getConfig().getInt("http_port"), this.getConfig().getString("http_auth_key"), this.taskExecutor);
     }
 
     private void setupAndCheckConfig() throws Exception {
@@ -29,5 +33,6 @@ public class Main extends JavaPlugin {
     @Override
     public void onDisable() {
         super.onDisable();
+        this.httpListener.stop();
     }
 }
